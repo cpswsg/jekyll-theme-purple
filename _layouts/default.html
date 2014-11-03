@@ -1,0 +1,73 @@
+---
+comments: true
+---
+
+{% include head.html %}
+
+	{% include nav.html %}
+
+	<!-- main-content -->
+		<section class="main-content">
+			<div class="container">
+				<!-- box -->
+				<div class="box">
+					{% for post in paginator.posts %}
+					<!-- article -->
+					<article class="hentry" itemscope itemtype="http://schema.org/BlogPosting">
+						{% if post.img %}
+						<div class="thumbnail">
+							<img src="{{ post.img }}" alt="{{ post.alt }}" itemprop="image">
+						</div>
+						{% else %}
+						<hr>
+						{% endif %}
+
+						<header class="heading">
+							<h1 class="article-title" itemprop="headline"><a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a></h1>
+						</header>
+
+						<div class="postmeta">
+							<meta itemprop="url" content="{{ site.url }}{{ post.url }}">
+							<span itemprop="datePublished"><i class="fa fa-calendar"></i>{{ post.date | localize: ":long" }}</span>
+							<span itemprop="keywords"><i class="fa fa-tags"></i>{% for tag in post.tags %}<a href="{{ site.url }}/tags/index.html#{{ tag }}" rel="tag">{{ tag }}</a>{% unless forloop.last %} &bull; {% endunless %}{% endfor %}</span>
+							{% if page.comments %}<span><i class="fa fa-comments-o"></i><a href="{{ site.url }}{{ post.url }}#disqus_thread">Comentários</a></span>{% endif %}
+						</div>
+
+						<div class="detail" itemprop="articleBody">
+							<p>{{ post.description }}</p>
+							<a class="more-link" href="{{ site.url }}{{ post.url }}">Continue lendo</a>
+						</div>
+
+						<div class="share-buttons">
+							<div class="addthis_toolbox addthis_default_style">
+								<a title="Compartilhe no Facebook" href="https://www.facebook.com/sharer/sharer.php" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;"><i class="fa fa-facebook"></i></a>
+								<a title="Compartilhe no Twitter" href="https://twitter.com/share?text={{ post.title | encode }}&url={{ site.url }}{{ post.url }}"  onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;"><i class="fa fa-twitter"></i></a>
+								<a title="Compartilhe no Google+" onclick="window.open('https://plus.google.com/share?url='+window.location.href, 'google-plus-share', 'width=490,height=530');return false;"><i class="fa fa-google-plus"></i></a>
+							</div>
+						</div>
+					</article>
+					<!-- //article -->
+					{% endfor %}
+				</div>
+				<!-- //box -->
+
+
+				<!-- pagination -->
+				<div class="pagination">
+				{% if paginator.previous_page %}
+					{% if paginator.page == 2 %}
+					<a href="{{ site.url }}">&laquo; Recentes</a>
+					{% else %}
+					<a href="{{ site.url }}/page{{paginator.previous_page}}/">&laquo; Recentes</a>
+					{% endif %}
+				{% endif %}
+				{% if paginator.next_page %}
+					<a href="{{ site.url }}/page{{paginator.next_page}}/">Antigos &raquo;</a>
+				{% endif %}
+				</div>
+				<!-- //pagination -->
+			</div>
+		</section>
+		<!-- //main-content -->
+
+{% include footer.html %}

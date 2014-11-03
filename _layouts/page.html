@@ -1,0 +1,26 @@
+{% include head.html %}
+
+	{% include nav.html %}
+
+	<!-- main-content -->
+		<section class="main-content">
+			<div class="container">
+				<!-- box -->
+				<div class="box">
+					<!-- article -->
+					<article class="hentry">
+						<header class="heading">
+							<h1 class="article-title">{{ page.title }}</h1>
+						</header>
+						<div class="detail">
+							{{ content }}
+						</div>
+					</article>
+					<!-- //article -->
+				</div>
+				<!-- //box -->
+			</div>
+		</section>
+		<!-- //main-content -->
+
+{% include footer.html %}

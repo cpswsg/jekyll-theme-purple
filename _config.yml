@@ -1,0 +1,47 @@
+# Site settings
+title: Cynthia Pereira | Desenvolvedora Web
+author: Cynthia Pereira
+description: ""
+url: https://cynthiapereira.github.io
+
+email: oi@cynthiapereira.com
+social:
+  - title: GitHub
+    icon: github
+    url: http://github.com/cynthiapereira
+  - title: E-mail
+    icon: envelope
+    url: mailto:oi@cynthiapereira.com
+  - title: Twitter
+    icon: twitter
+    url: http://twitter.com/cynzp
+  - title: RSS
+    icon: rss
+    url: /feed/
+disqus_shortname: cynzpereira
+google_analytics: UA-XXXXXXXX-X
+bing_verify:
+
+
+
+# Where things are
+source:      .
+destination: ./_site
+plugins:     ./_plugins
+layouts:     ./_layouts
+
+# Handling Reading
+include:      [".htaccess"]
+exclude:      ["README.md"]
+encoding:     "utf-8"
+markdown_ext: "markdown,mkdown,mkdn,mkd,md"
+
+# Conversion
+markdown:    Kramdown
+highlighter: pygments
+excerpt_separator: "\n\n"
+
+# Outputting
+permalink: /blog/:title.html
+paginate:  6
+timezone:  America/Sao_Paulo

@@ -1,0 +1,60 @@
+---
+comments: true
+---
+
+{% include head.html %}
+
+{% include nav.html %}
+
+		<!-- main-content -->
+		<section class="main-content">
+			<div class="container">
+				<!-- box -->
+				<div class="box">
+					<!-- article -->
+					<article class="hentry" itemscope itemtype="http://schema.org/BlogPosting">
+						{% if page.img %}
+						<div class="thumbnail">
+							<img src="{{ page.img }}" alt="{{ page.alt }}" itemprop="image">
+						</div>
+						{% endif %}
+
+						<header class="heading">
+							<h1 class="article-title" itemprop="headline">{{ page.title }}</h1>
+						</header>
+
+						<div class="postmeta">
+							<meta itemprop="url" content="{{ site.baseurl }}{{ page.url }}">
+							<span itemprop="datePublished"><i class="fa fa-calendar"></i>{{ page.date | localize: ":long" }}</span>
+							<span itemprop="keywords"><i class="fa fa-tags"></i>{% for tag in page.tags %}<a href="{{ site.url }}/tags/index.html#{{ tag }}" rel="tag">{{ tag }}</a>{% unless forloop.last %} &bull; {% endunless %}{% endfor %}</span>
+							{% if page.comments %}<span><i class="fa fa-comments-o"></i><a href="{{ site.url }}{{ page.url }}#disqus_thread">Comentários</a></span>{% endif %}
+						</div>
+
+						<div class="detail" itemprop="articleBody">
+							<p class="text-muted">{{ page.description }}</p>
+
+							{{ content }}
+						</div>
+
+						<div class="share-buttons">
+							<div class="addthis_toolbox addthis_default_style">
+								<a title="Compartilhe no Facebook" href="https://www.facebook.com/sharer/sharer.php" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;"><i class="fa fa-facebook"></i></a>
+								<a title="Compartilhe no Twitter" href="https://twitter.com/share?text={{ post.title | encode }}&url={{ site.url }}{{ post.url }}"  onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;"><i class="fa fa-twitter"></i></a>
+								<a title="Compartilhe no Google+" onclick="window.open('https://plus.google.com/share?url='+window.location.href, 'google-plus-share', 'width=490,height=530');return false;"><i class="fa fa-google-plus"></i></a>
+							</div>
+						</div>
+					</article>
+					<!-- //article -->
+
+					{% if page.comments %}
+					<div class="comments">
+						<div id="disqus_thread"></div>
+					</div>
+					{% endif %}
+				</div>
+				<!-- //box -->
+			</div>
+		</section>
+		<!-- //main-content -->
+
+{% include footer.html %}

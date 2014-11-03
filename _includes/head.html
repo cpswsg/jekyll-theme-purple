@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#" itemscope itemtype="http://schema.org/blog#">
+  <head>
+  	<!-- Metas -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ site.description }}">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="">
+    <meta name="twitter:title" content="{% if page.title %}{{ page.title }} - {% endif %} {{ site.title }}">
+    <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+    <meta name="twitter:creator" content="@cynzp">
+
+    <!-- Facebook Open Graph -->
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}blog{% endif %}"/>
+    <meta property="og:title" content="{% if page.title %}{{ page.title }} - {% endif %} {{ site.title }}"/>
+    <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}"/>
+    <meta property="og:url" content="{{ site.url }}{% if page.url != '/index.html' %}{{ page.url }}{% endif %}"/>
+    <meta property="og:site_name" content="{{ site.title }}"/>
+
+    <!-- Snnipet -->
+    <meta itemprop="name" content="{{ site.title }}">
+    <meta itemprop="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+    <meta itemprop="image" content="">
+
+
+    <!-- Webmaster Tools verfication -->
+    {% if site.bing_verify %}<meta name="msvalidate.01" content="{{ site.bing_verify }}">{% endif %}
+
+    <title>{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+
+		<!-- Favicon -->
+		<link rel="icon" href="{{ "/assets/images/favicon.png" | prepend: site.url }}">
+		<link rel="shortcut icon" href="{{ "/assets/images/favicon.ico" | prepend: site.url }}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ "/assets/images/apple-touch-icon-precomposed.png" | prepend: site.url }}">
+  	<meta name="msapplication-TileImage" content="{{ "/assets/images/tile.png" | prepend: site.url }}">
+    <meta name="msapplication-TileColor" content="#ec005f"/>
+
+    <!-- Fonts -->
+    <link type="text/css" rel="stylesheet" media="all" href="http://fonts.googleapis.com/css?family=Raleway|Oswald:300,400,700">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ "/assets/css/main.css" | prepend: site.url }}">
+    <link rel="stylesheet" href="{{ "/assets/css/syntax.css" | prepend: site.url }}">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+		<!-- RSS -->
+		{% capture canonical %}{{ site.url }}{% if site.permalink contains '.html' %}{{ page.url }}{% else %}{{ page.url | remove:'index.html' | strip_slash }}{% endif %}{% endcapture %}
+		<link rel="canonical" href="{{ canonical }}">
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }} Feed" href="/feed/">
+  </head>
+  <body class="custom-background{% if page.class %} {{ page.class }}{% endif %}">
