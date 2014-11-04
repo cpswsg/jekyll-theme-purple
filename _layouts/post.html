@@ -25,7 +25,7 @@ comments: true
 
 						<div class="postmeta">
 							<meta itemprop="url" content="{{ site.baseurl }}{{ page.url }}">
-							<span itemprop="datePublished"><i class="fa fa-calendar"></i>{{ page.date | localize: ":long" }}</span>
+							<span itemprop="datePublished"><i class="fa fa-calendar"></i>{{ page.date | date: "%d/%m/%Y" }}</span>
 							<span itemprop="keywords"><i class="fa fa-tags"></i>{% for tag in page.tags %}<a href="{{ site.url }}/tags/index.html#{{ tag }}" rel="tag">{{ tag }}</a>{% unless forloop.last %} &bull; {% endunless %}{% endfor %}</span>
 							{% if page.comments %}<span><i class="fa fa-comments-o"></i><a href="{{ site.url }}{{ page.url }}#disqus_thread">Comentários</a></span>{% endif %}
 						</div>
